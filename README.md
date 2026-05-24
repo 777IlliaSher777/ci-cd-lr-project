@@ -77,8 +77,8 @@ export default defineConfig([
 <!-- RELEASE-INFO-START -->
 ## Latest Release Info
 
-- Version: initial
-- PR Title: initial
-- Chuck Norris Joke: initial
+- Version: v1.0.4
+- PR Title: Manual push to main
+- Chuck Norris Joke: The 1951 UFO sighting was actually a man hole cover kicked by Chuck Norris.
 <!-- RELEASE-INFO-END -->
 
