@@ -12,6 +12,10 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      VERSION: v1.0.${{ github.run_number }}
+      PR_TITLE: ''
+      JOKE: ''
 
     steps:
       - name: Checkout repository
@@ -23,14 +27,18 @@ jobs:
           node-version: 22
 
       - name: Generate version
-        id: version
         run: echo "VERSION=v1.0.${{ github.run_number }}" >> $GITHUB_ENV
 
+      - name: Get PR title
+        run: |
+          echo "PR_TITLE=Manual push to main" >> $GITHUB_ENV
+
       - name: Get Chuck Norris Joke
-        id: joke
         run: |
           JOKE=$(curl -s https://api.chucknorris.io/jokes/random | jq -r '.value')
-          echo "JOKE=$JOKE" >> $GITHUB_ENV
+          echo "JOKE<<EOF" >> $GITHUB_ENV
+          echo "$JOKE" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
       - name: Create Git Tag
         run: |
@@ -39,10 +47,29 @@ jobs:
 
       - name: Update README
         run: |
-          echo "" >> README.md
-          echo "## Latest Release Info" >> README.md
-          echo "- Version: $VERSION" >> README.md
-          echo "- Chuck Norris Joke: $JOKE" >> README.md
+          cat <<EOF > release-info.md
+          ## Latest Release Info
+
+          - Version: $VERSION
+          - PR Title: $PR_TITLE
+          - Chuck Norris Joke: $JOKE
+          EOF
+
+          awk '
+          BEGIN {p=1}
+          /<!-- RELEASE-INFO-START -->/ {
+            print;
+            system("cat release-info.md");
+            p=0;
+            next
+          }
+          /<!-- RELEASE-INFO-END -->/ {
+            p=1
+          }
+          p
+          ' README.md > README.tmp
+
+          mv README.tmp README.md
 
       - name: Commit README changes
         run: |
@@ -57,5 +84,11 @@ jobs:
         with:
           tag_name: ${{ env.VERSION }}
           body: |
-            ## Chuck Norris Joke
+            ## Latest Release Info
+
+            Version: ${{ env.VERSION }}
+
+            PR Title: ${{ env.PR_TITLE }}
+
+            Chuck Norris Joke:
             ${{ env.JOKE }}
