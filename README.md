@@ -174,9 +174,9 @@ Deploy виконується автоматично через GitHub Actions �
 <!-- RELEASE-INFO-START -->
 ## Latest Release Info
 
-- Version: v1.0.5
+- Version: v1.0.6
 - PR Title: Manual push to main
-- Chuck Norris Joke: Chuck Norris's dog doesn't know who's a good boy.
+- Chuck Norris Joke: An office worker in Chuck Norris' National Fan Club headquarters was recently hospitalized shortly after she asked him to provider her with a 3 hole punch.
 <!-- RELEASE-INFO-END -->
 
 ---
