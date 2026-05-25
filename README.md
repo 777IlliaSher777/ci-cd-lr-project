@@ -174,9 +174,9 @@ Deploy виконується автоматично через GitHub Actions �
 <!-- RELEASE-INFO-START -->
 ## Latest Release Info
 
-- Version: v1.0.6
+- Version: v1.0.7
 - PR Title: Manual push to main
-- Chuck Norris Joke: An office worker in Chuck Norris' National Fan Club headquarters was recently hospitalized shortly after she asked him to provider her with a 3 hole punch.
+- Chuck Norris Joke: When Chuck Norris says "More cowbell", he MEANS it.
 <!-- RELEASE-INFO-END -->
 
 ---
