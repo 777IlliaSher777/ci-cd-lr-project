@@ -174,9 +174,9 @@ Deploy виконується автоматично через GitHub Actions �
 <!-- RELEASE-INFO-START -->
 ## Latest Release Info
 
-- Version: v1.0.4
+- Version: v1.0.5
 - PR Title: Manual push to main
-- Chuck Norris Joke: The 1951 UFO sighting was actually a man hole cover kicked by Chuck Norris.
+- Chuck Norris Joke: Chuck Norris's dog doesn't know who's a good boy.
 <!-- RELEASE-INFO-END -->
 
 ---
